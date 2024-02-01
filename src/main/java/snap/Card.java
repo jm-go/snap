@@ -14,11 +14,16 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "suit='" + suit + '\'' +
-                ", symbol='" + symbol + '\'' +
-                ", value=" + value +
-                '}';
+        String topValue = value == 10 ? "10" : " " + symbol;
+        String bottomValue = value == 10 ? "10" : symbol + " ";
+
+        return "+---------+\n" +
+                "|" + topValue + "       |\n" +
+                "|         |\n" +
+                "|    " + suit + "    |\n" +
+                "|         |\n" +
+                "|       " + bottomValue + "|\n" +
+                "+---------+";
     }
 
 }
