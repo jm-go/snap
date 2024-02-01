@@ -13,6 +13,10 @@ public class CardGame {
         this.initialiseDeck();
     }
 
+    public ArrayList<Card> getDeck() {
+        return deckOfCards;
+    }
+
     private void initialiseDeck() {
         String[] suits = {"♥", "♣", "♦", "♠"};
         String[] symbols = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
@@ -27,8 +31,14 @@ public class CardGame {
         }
     }
 
-    public ArrayList<Card> getDeck() {
-        return deckOfCards;
-    }
+    // Card dealCard() Takes the card from the top of the deck and returns it
+
+    // ArrayList<Card> sortDeckInNumberOrder() Sorts the deck in number order (e.g. 2222333344445555 etc) and stores the new shuffled deck back into the deckOfCards attribute
+
+    // ArrayList<Card> sortDeckIntoSuits() Sorts the deck into suits (2,3,4,5,6,7,8,9,10,J,Q,K,A of hearts, then 2,3,4,5,6,7,8,9,10,J,Q,K,A of clubs etc.) and stores the new shuffled
+    //deck back into the deckOfCards attribute.
+
+    // ArrayList<Card> shuffleDeck()
+    //Shuffles the deck into a random order and stores the new shuffled deck back into the deckOfCards attribute.
 
 }
