@@ -14,13 +14,15 @@ public class CardGame {
     }
 
     private void initialiseDeck() {
-        String[] suits = {"\u2665", "\u2663", "\u2666", "\u2660"};
+        String[] suits = {"♥", "♣", "♦", "♠"};
         String[] symbols = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
         int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
         for (String suit : suits) {
             for (int i = 0; i < symbols.length; i++) {
-                this.deckOfCards.add(new Card(suit, symbols[i], values[i]));
+                String color = (suit.equals("♦") || suit.equals("♥")) ? "\u001B[31m" : "\u001B[34m";
+                this.deckOfCards.add(new Card(suit, symbols[i], values[i], color));
+
             }
         }
     }

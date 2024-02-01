@@ -5,11 +5,16 @@ public class Card {
     private String suit;
     private String symbol;
     private int value;
+    private String ansiColour;
 
-    public Card(String suit, String symbol, int value) {
+    // ANSI escape code for colour reset
+    private static final String ANSI_RESET = "\u001B[0m";
+
+    public Card(String suit, String symbol, int value, String ansiColour) {
         this.suit = suit;
         this.symbol = symbol;
         this.value = value;
+        this.ansiColour = ansiColour;
     }
 
     @Override
@@ -20,7 +25,7 @@ public class Card {
         return "+---------+\n" +
                 "|" + topValue + "       |\n" +
                 "|         |\n" +
-                "|    " + suit + "    |\n" +
+                "|" + ansiColour + "    " + suit + "    " + ANSI_RESET + "|\n" +
                 "|         |\n" +
                 "|       " + bottomValue + "|\n" +
                 "+---------+";
