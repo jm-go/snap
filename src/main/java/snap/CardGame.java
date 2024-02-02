@@ -1,6 +1,7 @@
 package snap;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CardGame {
 
@@ -31,7 +32,10 @@ public class CardGame {
         }
     }
 
-    // Card dealCard() Takes the card from the top of the deck and returns it
+    // Takes the card from the top of the deck and returns it - does it need to be optional? Double check.
+    public Optional<Card> dealCard() {
+        return deckOfCards.stream().findFirst();
+    }
 
     // ArrayList<Card> sortDeckInNumberOrder() Sorts the deck in number order (e.g. 2222333344445555 etc) and stores the new shuffled deck back into the deckOfCards attribute
 
