@@ -41,7 +41,15 @@ public class CardGame {
         return deckOfCards.isEmpty() ? Optional.empty() : Optional.of(deckOfCards.remove(0));
     }
 
-    // ArrayList<Card> sortDeckInNumberOrder() Sorts the deck in number order (e.g. 2222333344445555 etc) and stores the new shuffled deck back into the deckOfCards attribute
+    /**
+     * Sorts the deck of cards in ascending order based on their numeric values.
+     *
+     * @return ArrayList<Card> - the deck sorted by number.
+     */
+    public ArrayList<Card> sortDeckInNumberOrder() {
+        Collections.sort(deckOfCards, Comparator.comparingInt(Card::getValue));
+        return deckOfCards;
+    }
 
     // ArrayList<Card> sortDeckIntoSuits() Sorts the deck into suits (2,3,4,5,6,7,8,9,10,J,Q,K,A of hearts, then 2,3,4,5,6,7,8,9,10,J,Q,K,A of clubs etc.) and stores the new shuffled
     //deck back into the deckOfCards attribute.
