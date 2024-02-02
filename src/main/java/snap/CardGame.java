@@ -1,6 +1,6 @@
 package snap;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class CardGame {
 
@@ -31,14 +31,46 @@ public class CardGame {
         }
     }
 
-    // Card dealCard() Takes the card from the top of the deck and returns it
+    /**
+     * Removes and returns the top card of the deck.
+     * Returns an empty {@code Optional} if the deck is empty.
+     *
+     * @return Optional<Card> - the top card, or an empty Optional if the deck is empty.
+     */
+    public Optional<Card> dealCard() {
+        return deckOfCards.isEmpty() ? Optional.empty() : Optional.of(deckOfCards.remove(0));
+    }
 
-    // ArrayList<Card> sortDeckInNumberOrder() Sorts the deck in number order (e.g. 2222333344445555 etc) and stores the new shuffled deck back into the deckOfCards attribute
+    /**
+     * Sorts the deck in ascending order based on their numeric values.
+     *
+     * @return ArrayList<Card> - the deck sorted by number.
+     */
+    public ArrayList<Card> sortDeckInNumberOrder() {
+        Collections.sort(deckOfCards, Comparator.comparingInt(Card::getValue));
+        return deckOfCards;
+    }
 
-    // ArrayList<Card> sortDeckIntoSuits() Sorts the deck into suits (2,3,4,5,6,7,8,9,10,J,Q,K,A of hearts, then 2,3,4,5,6,7,8,9,10,J,Q,K,A of clubs etc.) and stores the new shuffled
-    //deck back into the deckOfCards attribute.
+    /**
+     * Sorts the deck first by suit and then by their numeric values within each suit.
+     *
+     * @return ArrayList<Card> - the sorted deck.
+     */
+    public ArrayList<Card> sortDeckIntoSuits(){
+        deckOfCards.sort(Comparator.comparing(Card::getSuit)
+                .thenComparingInt(Card::getValue));
 
-    // ArrayList<Card> shuffleDeck()
-    //Shuffles the deck into a random order and stores the new shuffled deck back into the deckOfCards attribute.
+        return deckOfCards;
+    }
+
+    /**
+     * Shuffles the deck of cards into a random order.
+     *
+     * @return ArrayList<Card> - the shuffled deck.
+     */
+    public ArrayList<Card> shuffleDeck(){
+        Collections.shuffle(deckOfCards);
+        return deckOfCards;
+    }
 
 }

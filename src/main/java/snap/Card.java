@@ -17,6 +17,14 @@ public class Card {
         this.ansiColour = ansiColour;
     }
 
+    public String getSuit() {
+        return suit;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         String topValue = value == 10 ? "10" : " " + symbol;
