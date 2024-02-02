@@ -42,7 +42,7 @@ public class CardGame {
     }
 
     /**
-     * Sorts the deck of cards in ascending order based on their numeric values.
+     * Sorts the deck in ascending order based on their numeric values.
      *
      * @return ArrayList<Card> - the deck sorted by number.
      */
@@ -51,8 +51,17 @@ public class CardGame {
         return deckOfCards;
     }
 
-    // ArrayList<Card> sortDeckIntoSuits() Sorts the deck into suits (2,3,4,5,6,7,8,9,10,J,Q,K,A of hearts, then 2,3,4,5,6,7,8,9,10,J,Q,K,A of clubs etc.) and stores the new shuffled
-    //deck back into the deckOfCards attribute.
+    /**
+     * Sorts the deck first by suit and then by their numeric values within each suit.
+     *
+     * @return ArrayList<Card> - the sorted deck.
+     */
+    public ArrayList<Card> sortDeckIntoSuits(){
+        deckOfCards.sort(Comparator.comparing(Card::getSuit)
+                .thenComparingInt(Card::getValue));
+
+        return deckOfCards;
+    }
 
     /**
      * Shuffles the deck of cards into a random order.
