@@ -2,10 +2,8 @@ package snap;
 
 public class Main {
     public static void main(String[] args) {
-
-        Snap snap = new Snap("Snap Game");
-        snap.playGame();
+        GameController gameController = new GameController();
+        gameController.startGame();
     }
-
 
 }

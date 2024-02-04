@@ -5,7 +5,7 @@ public class GameController {
     private Snap snap;
     private Commands commands = new Commands();
 
-    public GameController(Snap snap) {
+    public GameController() {
         this.snap = new Snap("Snap Game");
         String[] commandOptions = new String[]{"Play Alone", "Play with a Friend", "Quit"};
         commands.setCommands(commandOptions);
@@ -29,7 +29,7 @@ public class GameController {
                     startAloneGame();
                     break;
                 case 1:
-                    startDuoGame();
+                    //startDuoGame();
                     break;
                 case 2:
                     System.out.println("\nQuitting the game. Goodbye!");
@@ -39,6 +39,14 @@ public class GameController {
                     break;
             }
         }
+    }
+
+    /**
+     * Initialises and starts a single player Snap game.
+     */
+    private void startAloneGame() {
+        System.out.println("\nSingle player mode selected.\n");
+        snap.playGame();
     }
 
 
