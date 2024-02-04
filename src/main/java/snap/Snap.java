@@ -27,7 +27,7 @@ public class Snap extends CardGame {
             }
 
             Card dealtCard = nextCard.get();
-            System.out.println("You drew: " + dealtCard);
+            System.out.println("You drew: \n\n" + dealtCard +"\n");
 
             if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
                 System.out.println("Snap! You win!");
