@@ -25,6 +25,10 @@ public class Card {
         return value;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
     @Override
     public String toString() {
         String topValue = value == 10 ? "10" : " " + symbol;
