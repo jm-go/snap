@@ -30,14 +30,12 @@ public class Snap extends CardGame {
             System.out.println("You drew: \n\n" + dealtCard +"\n");
 
             if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
-                System.out.println("Snap! You win!");
+                System.out.println("Snap! You win!\n");
                 isGameOn = false;
             }
 
             previousCard = dealtCard;
         }
-
-        scanner.close();
     }
 
 
