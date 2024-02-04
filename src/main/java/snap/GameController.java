@@ -17,7 +17,7 @@ public class GameController {
      * Invalid inputs prompt for a correct selection.
      */
     public void startGame() {
-        System.out.println("\nWelcome to Snap!" + "\n");
+        System.out.println("\nWelcome to Snap!\n");
         System.out.println("Please choose the game mode:");
 
         while (true) {

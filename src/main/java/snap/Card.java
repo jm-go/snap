@@ -6,8 +6,6 @@ public class Card {
     private String symbol;
     private int value;
     private String ansiColour;
-
-    // ANSI escape code for colour reset
     private static final String ANSI_RESET = "\u001B[0m";
 
     public Card(String suit, String symbol, int value, String ansiColour) {
