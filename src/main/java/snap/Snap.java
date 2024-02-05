@@ -37,6 +37,4 @@ public class Snap extends CardGame {
             previousCard = dealtCard;
         }
     }
-
-
 }

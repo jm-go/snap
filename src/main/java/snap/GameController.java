@@ -35,7 +35,7 @@ public class GameController {
                     System.out.println("\nQuitting the game. Goodbye!");
                     return;
                 default:
-                    System.out.println("\nInvalid input. Please select a valid option.");
+                    System.out.println("\nInvalid option.");
                     break;
             }
         }
