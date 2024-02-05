@@ -6,7 +6,6 @@ public class GameController {
     private Commands commands = new Commands();
 
     public GameController() {
-        this.snap = new Snap("Snap Game");
         String[] commandOptions = new String[]{"Play Alone", "Play with a Friend", "Quit"};
         commands.setCommands(commandOptions);
     }
@@ -46,6 +45,7 @@ public class GameController {
      */
     private void startAloneGame() {
         System.out.println("\nSingle player mode selected.\n");
+        this.snap = new Snap("Snap Game");
         snap.playAloneGame();
     }
 
@@ -54,6 +54,7 @@ public class GameController {
      */
     private void startDuoGame() {
         System.out.println("\nTwo-player mode selected.\n");
+        this.snap = new Snap("Snap Game");
         snap.playDuoGame();
     }
 
