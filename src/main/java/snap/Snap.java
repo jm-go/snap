@@ -8,12 +8,14 @@ public class Snap extends CardGame {
     private Card previousCard;
     private Player playerOne;
     private Player playerTwo;
+    private Commands commands = new Commands();
 
     public Snap(String name) {
         super(name);
         this.shuffleDeck();
     }
 
+    // Refactor and add comment
     public void playAloneGame() {
         Scanner scanner = new Scanner(System.in);
         boolean isGameOn = true;
@@ -40,6 +42,7 @@ public class Snap extends CardGame {
         }
     }
 
+    // Refactor and add comment
     public void playDuoGame() {
         this.playerOne = new Player("");
         this.playerTwo = new Player("");
@@ -49,9 +52,9 @@ public class Snap extends CardGame {
         Player currentPlayer = playerOne;
 
         System.out.print("Please enter a name for Player 1: ");
-        this.playerOne.setName(scanner.nextLine());
+        this.playerOne.setName(commands.getNameInput());
         System.out.print("\nPlease enter a name for Player 2: ");
-        this.playerTwo.setName(scanner.nextLine());
+        this.playerTwo.setName(commands.getNameInput());
         while (isGameOn) {
             System.out.println("\n" + currentPlayer.getName() + "'s turn. Press 'Enter' to draw a card.");
             scanner.nextLine();
