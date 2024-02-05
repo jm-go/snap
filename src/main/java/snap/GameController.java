@@ -29,7 +29,7 @@ public class GameController {
                     startAloneGame();
                     break;
                 case 1:
-                    //startDuoGame();
+                    startDuoGame();
                     break;
                 case 2:
                     System.out.println("\nQuitting the game. Goodbye!");
@@ -46,7 +46,15 @@ public class GameController {
      */
     private void startAloneGame() {
         System.out.println("\nSingle player mode selected.\n");
-        snap.playGame();
+        snap.playAloneGame();
+    }
+
+    /**
+     * Initialises and starts a two-player Snap game.
+     */
+    private void startDuoGame() {
+        System.out.println("\nTwo-player mode selected.\n");
+        snap.playDuoGame();
     }
 
 
