@@ -8,7 +8,8 @@ public class Snap extends CardGame {
     private Card previousCard;
     private Player playerOne;
     private Player playerTwo;
-    private Commands commands = new Commands();
+    private Scanner scanner = new Scanner(System.in);
+    private boolean isGameOn = true;
 
     public Snap(String name) {
         super(name);
@@ -17,65 +18,61 @@ public class Snap extends CardGame {
 
     // Refactor and add comment
     public void playAloneGame() {
-        Scanner scanner = new Scanner(System.in);
-        boolean isGameOn = true;
-
         while (isGameOn) {
             System.out.println("Press 'Enter' to take your turn.");
             scanner.nextLine();
-
-            Optional<Card> nextCard = this.dealCard();
-            if (nextCard.isEmpty()) {
-                System.out.println("The card deck is now empty. Game over.");
-                break;
-            }
-
-            Card dealtCard = nextCard.get();
-            System.out.println("You drew: \n\n" + dealtCard +"\n");
-
-            if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
-                System.out.println("Snap! You win!\n");
-                isGameOn = false;
-            }
-
-            previousCard = dealtCard;
+            takeTurn(null);
         }
     }
 
     // Refactor and add comment
     public void playDuoGame() {
-        this.playerOne = new Player("");
-        this.playerTwo = new Player("");
-
-        Scanner scanner = new Scanner(System.in);
-        boolean isGameOn = true;
+        setupPlayers();
         Player currentPlayer = playerOne;
 
-        System.out.print("Please enter a name for Player 1: ");
-        this.playerOne.setName(commands.getNameInput());
-        System.out.print("\nPlease enter a name for Player 2: ");
-        this.playerTwo.setName(commands.getNameInput());
         while (isGameOn) {
             System.out.println("\n" + currentPlayer.getName() + "'s turn. Press 'Enter' to draw a card.");
             scanner.nextLine();
+            takeTurn(currentPlayer);
+            currentPlayer = currentPlayer == playerOne ? playerTwo : playerOne;
+        }
+    }
 
-            Optional<Card> nextCard = this.dealCard();
-            if (nextCard.isEmpty()) {
-                System.out.println("\nThe card deck is now empty. Game over.\n");
-                break;
-            }
+    private void setupPlayers() {
+        Commands commands = new Commands();
+        System.out.print("Please enter a name for Player 1: ");
+        playerOne = new Player(commands.getNameInput());
+        System.out.print("\nPlease enter a name for Player 2: ");
+        playerTwo = new Player(commands.getNameInput());
+    }
 
-            Card dealtCard = nextCard.get();
+    private void takeTurn(Player currentPlayer) {
+        Optional<Card> nextCard = this.dealCard();
+        if (nextCard.isEmpty()) {
+            System.out.println("\nThe card deck is now empty. Game over.\n");
+            isGameOn = false;
+            return;
+        }
+
+        Card dealtCard = nextCard.get();
+        if (currentPlayer == null) {
+            System.out.println("You drew: \n\n" + dealtCard + "\n");
+        } else {
             System.out.println(currentPlayer.getName() + " drew: \n\n" + dealtCard);
+        }
 
-            if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
-                System.out.println("\nSnap! " + currentPlayer.getName() + " wins!\n");
-                isGameOn = false;
+        checkWin(dealtCard, currentPlayer);
+        previousCard = dealtCard;
+    }
+
+    private void checkWin(Card dealtCard, Player currentPlayer) {
+        if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
+            if (currentPlayer == null) {
+                System.out.println("Snap! You win!\n");
             } else {
-                currentPlayer = currentPlayer == playerOne ? playerTwo : playerOne;
+                System.out.println("\nSnap! " + currentPlayer.getName() + " wins!\n");
             }
-
-            previousCard = dealtCard;
+            isGameOn = false;
         }
     }
 }
