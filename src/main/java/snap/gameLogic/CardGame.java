@@ -1,4 +1,6 @@
-package snap;
+package snap.gameLogic;
+
+import snap.gameLogic.Card;
 
 import java.util.*;
 

@@ -1,14 +1,10 @@
-package snap;
+package snap.ui;
 
 import java.util.Scanner;
 
 public class Commands {
     private Scanner scanner = new Scanner(System.in);
     private String[] commands;
-
-    public String[] getCommands() {
-        return commands;
-    }
 
     public void setCommands(String[] commands) {
         this.commands = commands;
@@ -52,4 +48,21 @@ public class Commands {
         }
     }
 
+    /**
+     * Reads a String input from the user.
+     * Validates the input to ensure it is a word containing characters from A-Z
+     * and repeats the prompt if needed. Makes the first character uppercase.
+     *
+     * @return The validated String input as the player's name.
+     */
+    public String getNameInput() {
+        while (true) {
+            String name = scanner.nextLine().trim();
+            if (!name.isEmpty() && name.matches("[a-zA-Z]+")) {
+                return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+            } else {
+                System.out.println("Invalid input. Please enter a valid name.");
+            }
+        }
+    }
 }

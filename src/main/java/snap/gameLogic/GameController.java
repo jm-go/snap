@@ -1,4 +1,7 @@
-package snap;
+package snap.gameLogic;
+
+import snap.gameLogic.Snap;
+import snap.ui.Commands;
 
 public class GameController {
 
@@ -6,7 +9,6 @@ public class GameController {
     private Commands commands = new Commands();
 
     public GameController() {
-        this.snap = new Snap("Snap Game");
         String[] commandOptions = new String[]{"Play Alone", "Play with a Friend", "Quit"};
         commands.setCommands(commandOptions);
     }
@@ -29,13 +31,13 @@ public class GameController {
                     startAloneGame();
                     break;
                 case 1:
-                    //startDuoGame();
+                    startDuoGame();
                     break;
                 case 2:
                     System.out.println("\nQuitting the game. Goodbye!");
                     return;
                 default:
-                    System.out.println("\nInvalid input. Please select a valid option.");
+                    System.out.println("\nInvalid option.");
                     break;
             }
         }
@@ -46,7 +48,17 @@ public class GameController {
      */
     private void startAloneGame() {
         System.out.println("\nSingle player mode selected.\n");
-        snap.playGame();
+        this.snap = new Snap("Snap Game");
+        snap.playAlone();
+    }
+
+    /**
+     * Initialises and starts a two-player Snap game.
+     */
+    private void startDuoGame() {
+        System.out.println("\nTwo-player mode selected.\n");
+        this.snap = new Snap("Snap Game");
+        snap.playDuo();
     }
 
 

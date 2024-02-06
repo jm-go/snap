@@ -1,4 +1,4 @@
-package snap;
+package snap.gameLogic;
 
 public class Card {
 
@@ -27,6 +27,13 @@ public class Card {
         return symbol;
     }
 
+    /**
+     * Returns a string representation of the card in a specific visual format.
+     * The card is represented as a text-based image with ANSI colours,
+     * showing its value and suit.
+     *
+     * @return A string that visually represents the card.
+     */
     @Override
     public String toString() {
         String topValue = value == 10 ? "10" : " " + symbol;
