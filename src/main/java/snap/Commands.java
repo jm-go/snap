@@ -6,10 +6,6 @@ public class Commands {
     private Scanner scanner = new Scanner(System.in);
     private String[] commands;
 
-    public String[] getCommands() {
-        return commands;
-    }
-
     public void setCommands(String[] commands) {
         this.commands = commands;
     }
