@@ -46,7 +46,7 @@ public class GameController {
     private void startAloneGame() {
         System.out.println("\nSingle player mode selected.\n");
         this.snap = new Snap("Snap Game");
-        snap.playAloneGame();
+        snap.playAlone();
     }
 
     /**
@@ -55,7 +55,7 @@ public class GameController {
     private void startDuoGame() {
         System.out.println("\nTwo-player mode selected.\n");
         this.snap = new Snap("Snap Game");
-        snap.playDuoGame();
+        snap.playDuo();
     }
 
 

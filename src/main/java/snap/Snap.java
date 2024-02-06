@@ -16,8 +16,11 @@ public class Snap extends CardGame {
         this.shuffleDeck();
     }
 
-    // Refactor and add comment
-    public void playAloneGame() {
+    /**
+     * Starts a single-player Snap game.
+     * The game runs in a loop until the deck is empty or a snap is found.
+     */
+    public void playAlone() {
         while (isGameOn) {
             System.out.println("Press 'Enter' to take your turn.");
             scanner.nextLine();
@@ -25,9 +28,13 @@ public class Snap extends CardGame {
         }
     }
 
-    // Refactor and add comment
-    public void playDuoGame() {
-        setupPlayers();
+    /**
+     * Starts a two-player Snap game.
+     * Players take turns drawing cards from the deck and the game continues
+     * until the deck is empty or a snap is found.
+     */
+    public void playDuo() {
+        addPlayers();
         Player currentPlayer = playerOne;
 
         while (isGameOn) {
@@ -38,7 +45,10 @@ public class Snap extends CardGame {
         }
     }
 
-    private void setupPlayers() {
+    /**
+     * Sets up the player names for a two-player game.
+     */
+    private void addPlayers() {
         Commands commands = new Commands();
         System.out.print("Please enter a name for Player 1: ");
         playerOne = new Player(commands.getNameInput());
@@ -46,6 +56,12 @@ public class Snap extends CardGame {
         playerTwo = new Player(commands.getNameInput());
     }
 
+    /**
+     * Manages a turn for the given player in the game of Snap.
+     * It deals a card, displays it, and checks for a winning condition.
+     *
+     * @param currentPlayer The current player in two-player mode, or null for single-player mode.
+     */
     private void takeTurn(Player currentPlayer) {
         Optional<Card> nextCard = this.dealCard();
         if (nextCard.isEmpty()) {
@@ -65,6 +81,13 @@ public class Snap extends CardGame {
         previousCard = dealtCard;
     }
 
+    /**
+     * Checks if the current card matches the previous card's symbol,
+     * indicating a win in Snap game.
+     *
+     * @param dealtCard The card drawn in the current turn.
+     * @param currentPlayer The player who drew the card, or null for single-player mode.
+     */
     private void checkWin(Card dealtCard, Player currentPlayer) {
         if (previousCard != null && previousCard.getSymbol().equals(dealtCard.getSymbol())) {
             if (currentPlayer == null) {
