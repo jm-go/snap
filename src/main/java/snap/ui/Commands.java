@@ -1,4 +1,4 @@
-package snap;
+package snap.ui;
 
 import java.util.Scanner;
 

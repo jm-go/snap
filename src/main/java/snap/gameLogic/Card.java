@@ -1,4 +1,4 @@
-package snap;
+package snap.gameLogic;
 
 public class Card {
 

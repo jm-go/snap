@@ -1,4 +1,4 @@
-package snap;
+package snap.player;
 
 public class Player {
 

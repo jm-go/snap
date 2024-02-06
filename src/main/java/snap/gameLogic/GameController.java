@@ -1,4 +1,7 @@
-package snap;
+package snap.gameLogic;
+
+import snap.gameLogic.Snap;
+import snap.ui.Commands;
 
 public class GameController {
 

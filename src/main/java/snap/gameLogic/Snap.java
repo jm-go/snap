@@ -1,4 +1,7 @@
-package snap;
+package snap.gameLogic;
+
+import snap.ui.Commands;
+import snap.player.Player;
 
 import java.util.Optional;
 import java.util.Scanner;
